@@ -13,7 +13,7 @@ import java.util.Map;
  * Created by cheng.xi on 2017-04-14 14:01.
  * Netty服务端处理器，处理请求并返回结果
  */
-public class NettyServiceHandler extends SimpleChannelInboundHandler {
+public class NettyServiceHandler extends SimpleChannelInboundHandler implements ChannelHandler{
 
     private Map<String, Class<?>> exportedServices;
 
@@ -22,6 +22,7 @@ public class NettyServiceHandler extends SimpleChannelInboundHandler {
     }
 
     protected void channelRead0(ChannelHandlerContext channelHandlerContext, Object object) throws Exception {
+        System.out.println("handler中exportedServices：" + exportedServices.size());
         Request request = (Request)object;
         String serviceName = request.getInterfaceName();
         String methodName = request.getMethodName();

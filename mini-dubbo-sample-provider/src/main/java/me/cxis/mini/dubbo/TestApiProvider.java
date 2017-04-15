@@ -1,6 +1,11 @@
 package me.cxis.mini.dubbo;
 
+import me.cxis.mini.dubbo.consumer.DubboConsumer;
 import me.cxis.mini.dubbo.provider.DubboProvider;
+
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.Scanner;
 
 
 /**
@@ -10,7 +15,7 @@ import me.cxis.mini.dubbo.provider.DubboProvider;
  * 这里是测试使用API发布服务
  */
 public class TestApiProvider {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         //要发布的服务
         HelloWorldService helloWorldService = new HelloWorldServiceImpl();
 
@@ -22,7 +27,21 @@ public class TestApiProvider {
 
         dubboProvider.export();
 
+        //要发布的服务
+        HelloWorldService1 helloWorldService1 = new HelloWorldServiceImpl1();
 
+        //发布服务
+        DubboProvider dubboProvider1 = new DubboProvider();
+        dubboProvider1.setPort(3347);
+        dubboProvider1.setRef(helloWorldService1);
+        dubboProvider1.setInterface(HelloWorldService1.class);
 
+        dubboProvider1.export();
+
+        DubboConsumer<HelloWorldService> reference = new DubboConsumer<HelloWorldService>();
+        reference.setInterface(HelloWorldService.class);
+
+        HelloWorldService helloWorldService2 = reference.get();
+        System.out.println(helloWorldService2.sayHello("zhangsan"));
     }
 }

@@ -1,14 +1,9 @@
 package me.cxis.mini.dubbo.provider;
 
-import me.cxis.mini.dubbo.handler.ServiceHandler;
-import me.cxis.mini.dubbo.transport.Transporters;
+import me.cxis.mini.dubbo.protocol.MiniDubboProtocol;
+import me.cxis.mini.dubbo.protocol.Protocol;
 
-import java.io.IOException;
-import java.net.InetSocketAddress;
-import java.net.ServerSocket;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 /**
  * Created by cheng.xi on 2017-04-14 10:34.
@@ -24,7 +19,7 @@ public class DubboProvider<T> {
     //接口名字
     private String interfaceName;
 
-    //接口的引用
+    //接口的实现引用
     private T ref;
 
     //导出的服务，接口作为key，实现作为value
@@ -35,25 +30,18 @@ public class DubboProvider<T> {
     }
 
     /**
-     * 发布服务
+     * 发布服务，每次只发布一个服务
      */
-    public void export() {
+    public synchronized void export() throws InterruptedException {
+        //调用协议层，根据具体协议暴露服务
+        Protocol protocol = MiniDubboProtocol.getMiniDubboProtocol();
+        protocol.export(this.interfaceName,this.ref.getClass());
         //发布的服务缓存起来
-        exportedServices.put(this.interfaceName,this.ref.getClass());
+        //exportedServices.put(this.interfaceName,this.ref.getClass());
 
-        //启动服务监听
-        this.startServerAndListening();
     }
 
-    //启动服务，并监听
-    private void startServerAndListening() {
-        //调用传输层，进行服务监听
-        try {
-            Transporters.bindAndStart(exportedServices);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
+
 
     //-------------以下是get和set方法-------------//
     public void setPort(int port) {

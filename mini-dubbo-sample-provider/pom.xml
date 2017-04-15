@@ -34,5 +34,15 @@
             <artifactId>mini.dubbo.sample.common</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
+        <dependency>
+            <groupId>me.cxis</groupId>
+            <artifactId>mini.dubbo.consumer</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>me.cxis</groupId>
+            <artifactId>mini.dubbo.consumer</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
     </dependencies>
 </project>
