@@ -1,16 +1,16 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>mini.dubbo</artifactId>
+        <artifactId>mini-dubbo</artifactId>
         <groupId>me.cxis</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>mini.dubbo.provider</artifactId>
+    <artifactId>mini-dubbo-provider</artifactId>
     <packaging>jar</packaging>
 
-    <name>mini.dubbo.provider</name>
+    <name>mini-dubbo-provider</name>
     <url>http://maven.apache.org</url>
 
     <properties>
@@ -34,7 +34,7 @@
 
         <dependency>
             <groupId>me.cxis</groupId>
-            <artifactId>mini.dubbo.common</artifactId>
+            <artifactId>mini-dubbo-common</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
     </dependencies>

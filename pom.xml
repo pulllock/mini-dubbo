@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>me.cxis</groupId>
-    <artifactId>mini.dubbo</artifactId>
+    <artifactId>mini-dubbo</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
     <modules>
