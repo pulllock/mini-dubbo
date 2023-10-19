@@ -1,3 +1,0 @@
-netty=me.cxis.mini.dubbo.extension.NettyTransporter
-mina=me.cxis.mini.dubbo.extension.MinaTransporter
-bee=me.cxis.mini.dubbo.extension.BeeTransporter

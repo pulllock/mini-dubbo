@@ -1,0 +1,3 @@
+netty=extension.dubbo.mini.fun.pullock.NettyTransporter
+mina=extension.dubbo.mini.fun.pullock.MinaTransporter
+bee=fun.pullock.mini.dubbo.extension.BeeTransporter
